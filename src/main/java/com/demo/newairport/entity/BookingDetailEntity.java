@@ -18,13 +18,18 @@ public class BookingDetailEntity {
     @JoinColumn(name = "ticketId")
     private TicketEntity ticketId;
 
+    @ManyToOne
+    @JoinColumn(name="bag_id")
+    private BaggageEntity bag_id;
+
     public BookingDetailEntity(){
 
     }
-    public BookingDetailEntity(String seatNum, TableBookingEntity bookingId, TicketEntity ticketId){
+    public BookingDetailEntity(String seatNum, TableBookingEntity bookingId, TicketEntity ticketId, BaggageEntity bag_id){
         this.bookingId = bookingId;
         this.ticketId = ticketId;
         this.seatNum = seatNum;
+        this.bag_id = bag_id;
     }
 
     public TableBookingEntity getBookingId(){
@@ -51,12 +56,21 @@ public class BookingDetailEntity {
         this.seatNum = seatNum;
     }
 
+    public BaggageEntity getBag_id() {
+        return bag_id;
+    }
+
+    public void setBag_id(BaggageEntity bag_id) {
+        this.bag_id = bag_id;
+    }
+
     @Override
     public String toString() {
         return "{" + "\'" +
                 "bookingId=" + bookingId + "\'" +
                 ", ticketId=" + ticketId + "\'" +
                 ", seatNum=" + seatNum + "\'" +
+                ", bag_id=" + bag_id + "\'" +
                 "}";
     }
 }

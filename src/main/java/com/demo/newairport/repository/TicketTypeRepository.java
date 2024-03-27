@@ -1,6 +1,5 @@
 package com.demo.newairport.repository;
 
-import com.demo.newairport.entity.AirportEntity;
 import com.demo.newairport.entity.TicketTypeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -30,7 +30,7 @@ public class FlightService {
         return flightEntity;
     }
 
-    public void removeFlight(String flightNum){
+    public void removeFlight(Long flightNum){
         boolean exists = flightRepository.existsById(flightNum);
         if (!exists) {
             throw new IllegalArgumentException("not found");
@@ -38,7 +38,7 @@ public class FlightService {
         flightRepository.deleteById(flightNum);
     }
 
-    public FlightEntity updateFlight(@RequestBody String flightNum, FlightEntity flightEntity){
+    public FlightEntity updateFlight(@RequestBody Long flightNum, FlightEntity flightEntity){
         if (flightRepository.existsById(flightNum)){
             flightEntity.setFlightNum(flightNum);
             return flightRepository.save(flightEntity);

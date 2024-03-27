@@ -11,14 +11,18 @@ public class FlightEntity {
 
 //    @GeneratedValue
     @Id
-    @Column(unique = true)
-    private String flightNum;
+//    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long flightNum;
     private String airlineName;
 //    private String toAirline;
     private Time arrival;
     private Date arrivalDate;
     private Time departure;
     private Date departureDate;
+    @ManyToOne
+    @JoinColumn(name = "image", referencedColumnName = "image_id")
+    private ImageEntity image;
 //    private String direct;
 
 
@@ -34,7 +38,7 @@ public class FlightEntity {
     public FlightEntity(){}
 
     // Parameterized constructor
-    public FlightEntity(String airlineName, Time arrival, Date arrivalDate, Time departure, Date departureDate, AirportEntity origin, AirportEntity destination){
+    public FlightEntity(String airlineName, Time arrival, Date arrivalDate, Time departure, Date departureDate, AirportEntity origin, AirportEntity destination, ImageEntity image){
         this.airlineName = airlineName;
         this.destination = destination;
         this.origin = origin;
@@ -42,6 +46,7 @@ public class FlightEntity {
         this.arrivalDate = arrivalDate;
         this.departure = departure;
         this.departureDate = departureDate;
+        this.image = image;
 //        this.direct = direct;
     }
 
@@ -69,7 +74,7 @@ public class FlightEntity {
         return destination;
     }
 
-    public String getFlightNum() {
+    public Long getFlightNum() {
         return flightNum;
     }
 
@@ -85,6 +90,14 @@ public class FlightEntity {
         this.arrival = arrival;
     }
 
+    public ImageEntity getImage() {
+        return image;
+    }
+    public void setImage(ImageEntity image) {
+        this.image = image;
+    }
+
+
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
@@ -97,7 +110,7 @@ public class FlightEntity {
         this.departure = departure;
     }
 
-    public void setFlightNum(String flightNum) {
+    public void setFlightNum(Long flightNum) {
         this.flightNum = flightNum;
     }
 

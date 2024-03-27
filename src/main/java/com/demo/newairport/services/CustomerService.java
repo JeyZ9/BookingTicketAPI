@@ -3,7 +3,7 @@ import com.demo.newairport.entity.CustomerEntity;
 import com.demo.newairport.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +22,10 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public Optional<CustomerEntity> getCustomerById(Long customerId){
+        return customerRepository.findById(customerId);
+    }
+
     public void dropCustomer(Long customerId){
         boolean exists = customerRepository.existsById(customerId);
         if (!exists){
@@ -37,6 +41,15 @@ public class CustomerService {
             }
             customerRepository.save(customerEntity);
         return customerEntity;
+    }
+
+    public CustomerEntity updateCustomer(Long customerId, CustomerEntity customerEntity){
+         if(customerRepository.existsById(customerId)){
+            customerEntity.setCustomerId(customerId);
+            return customerRepository.save(customerEntity);
+        }else {
+             throw new RuntimeException("CustomerEntity not found");
+         }
     }
 }
 

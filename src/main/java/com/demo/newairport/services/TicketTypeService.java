@@ -37,12 +37,12 @@ public class TicketTypeService {
         ticketTypeRepository.deleteById(ticketTypeId);
     }
 
-    public TicketTypeEntity addTicketType(Long ticketTypeId, TicketTypeEntity ticketTypeEntity){
-        if (ticketTypeRepository.existsById(ticketTypeId)){
-            ticketTypeEntity.setTicketTypeId(ticketTypeId);
-            return ticketTypeRepository.save(ticketTypeEntity);
-        }else {
-            throw new RuntimeException("not found ticket type");
-        }
-    }
+//    public TicketTypeEntity addTicketType(Long ticketTypeId, TicketTypeEntity ticketTypeEntity){
+//        if (ticketTypeRepository.existsById(ticketTypeId)){
+//            ticketTypeEntity.setTicketTypeId(ticketTypeId);
+//            return ticketTypeRepository.save(ticketTypeEntity);
+//        }else {
+//            throw new RuntimeException("not found ticket type");
+//        }
+//    }
 }

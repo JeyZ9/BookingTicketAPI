@@ -21,7 +21,7 @@ public class BaggageService {
         return baggageRepository.findAll();
     }
 
-    public BaggageEntity getBaggage(BaggageEntity baggageEntity) {
+    public BaggageEntity createtBaggage(BaggageEntity baggageEntity) {
         Optional<BaggageEntity> baggageEntityOptional = baggageRepository.findBaggageEntityById(baggageEntity.getBagId());
         if (baggageEntityOptional.isPresent()) {
             throw new IllegalStateException("BaggageEntity Already exists");

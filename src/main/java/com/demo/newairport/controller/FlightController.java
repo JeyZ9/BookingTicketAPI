@@ -36,12 +36,12 @@ public class FlightController {
     }
 
     @DeleteMapping("/drop/flightNum")
-    public void deleteFlight(@PathVariable("flightNum") String flightNum){
+    public void deleteFlight(@PathVariable("flightNum") Long flightNum){
         flightService.removeFlight(flightNum);
     }
 
     @PutMapping("/edit/{flightNum}")
-    public ResponseEntity<FlightEntity> updateFlight(@PathVariable String flightNum, @RequestBody FlightEntity updatedFlight){
+    public ResponseEntity<FlightEntity> updateFlight(@PathVariable Long flightNum, @RequestBody FlightEntity updatedFlight){
         try {
             FlightEntity updateEntity = flightService.updateFlight(flightNum, updatedFlight);
             return ResponseEntity.ok(updateEntity);

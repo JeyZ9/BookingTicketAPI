@@ -18,17 +18,13 @@ public class AirportEntity {
     private String name;
     private String country;
     private String city;
-    private Float latitude;
-    private Float longitude;
 
     public AirportEntity(){}
 
-    public AirportEntity(String name, String country, String city, Float latitude, Float longitude){
+    public AirportEntity(String name, String country, String city){
         this.name = name;
         this.country = country;
         this.city = city;
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
 //    Getter && Setter
@@ -49,13 +45,6 @@ public class AirportEntity {
         return city;
     }
 
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
 
     public void setAirportCode(String airportCode) {
         this.airportCode = airportCode;
@@ -73,14 +62,6 @@ public class AirportEntity {
         this.city = city;
     }
 
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
     @Override
     public String toString(){
         return "{" +
@@ -88,8 +69,6 @@ public class AirportEntity {
                 ", name=" + name + '\'' +
                 ", country=" + country + '\'' +
                 ", city=" + city + '\'' +
-                ", latitude=" + latitude + '\'' +
-                ", longitude=" + longitude + '\'' +
                 "}";
     }
 }

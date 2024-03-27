@@ -1,6 +1,9 @@
 package com.demo.newairport.entity;
 
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import java.awt.*;
 
 @Entity
 @Table
@@ -8,39 +11,47 @@ public class TicketEntity {
     @GeneratedValue
     @Id
     private Long ticketId;
-    private byte[] logoImage;
+
+//    @ManyToOne
+//    @JoinColumn(name = "image", referencedColumnName = "image_id")
+//    private ImageEntity image;
+
     private float price;
-    private int baggageWeight;
 
     @ManyToOne
-    @JoinColumn(name="ticket_type_id")
+    @JoinColumn(name = "ticketType", referencedColumnName = "ticketTypeId")
     private TicketTypeEntity ticketType;
 
     @ManyToOne
-    @JoinColumn(name="flight_num")
-    private FlightEntity flightNum;
+    @JoinColumn(name = "flight", referencedColumnName = "flightNum")
+    private FlightEntity flight;
 
-    public TicketEntity(){}
+    @ManyToOne
+    @JoinColumn(name = "stop", referencedColumnName = "stop_id")
+    private StopEntity stop;
 
-    public TicketEntity(byte[] logoImage, float price, int baggageWeight, TicketTypeEntity ticketType, FlightEntity flightNum){
-        this.logoImage = logoImage;
+    public TicketEntity() {
+    }
+
+    public TicketEntity(float price, TicketTypeEntity ticketType, FlightEntity flight, StopEntity stop) {
         this.price = price;
         this.ticketType = ticketType;
-        this.flightNum = flightNum;
-        this.baggageWeight = baggageWeight;
+        this.flight = flight;
+        this.stop = stop;
     }
 
     public FlightEntity getFlight() {
-        return flightNum;
+        return flight;
+    }
+
+    public StopEntity getStop() {
+        return stop;
     }
 
     public Long getTicketId() {
         return ticketId;
     }
 
-    public byte[] getLogoImage() {
-        return logoImage;
-    }
 
     public TicketTypeEntity getTicketType() {
         return ticketType;
@@ -50,25 +61,14 @@ public class TicketEntity {
         return price;
     }
 
-    public int getBaggageWeight() {
-        return baggageWeight;
-    }
-
-    public void setFlight(FlightEntity flightNum) {
-        this.flightNum = flightNum;
+    public void setFlight(FlightEntity flight) {
+        this.flight = flight;
     }
 
     public void setTicketId(Long ticketId) {
         this.ticketId = ticketId;
     }
 
-    public void setBaggageWeight(int baggageWeight) {
-        this.baggageWeight = baggageWeight;
-    }
-
-    public void setLogoImage(byte[] logoImage) {
-        this.logoImage = logoImage;
-    }
 
     public void setPrice(float price) {
         this.price = price;
@@ -78,15 +78,18 @@ public class TicketEntity {
         this.ticketType = ticketType;
     }
 
+    public void setStop(StopEntity stop) {
+        this.stop = stop;
+    }
+
     @Override
     public String toString() {
         return "{" +
                 "ticketId=" + ticketId +
-                ", logoImage=" + logoImage +
                 ", ticketType=" + ticketType +
                 ", price=" + price +
-                ", baggageWeight=" + baggageWeight +
-                ", flight=" + flightNum +
+                ", flight=" + flight +
+                ", stop=" + stop +
                 "}";
     }
 }

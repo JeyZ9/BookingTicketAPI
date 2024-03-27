@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface FlightRepository extends JpaRepository<FlightEntity, String> {
+public interface FlightRepository extends JpaRepository<FlightEntity, Long> {
     @Query("SELECT f FROM FlightEntity f WHERE f.flightNum = ?1")
-    Optional<FlightEntity> findFlightEntityById(String flightNum);
+    Optional<FlightEntity> findFlightEntityById(Long flightNum);
 }
 

@@ -13,6 +13,7 @@ public class CustomerEntity {
     private Long customerId;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
 
     private String password;

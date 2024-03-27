@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.time.Duration;
+
 @Entity
 @Table
 public class BaggageEntity {
@@ -12,10 +14,10 @@ public class BaggageEntity {
     @Column(unique = true)
     private Long bagId;
     private String bagName;
-    private int price;
+    private Double price;
 
     public BaggageEntity(){}
-    public BaggageEntity(Long bagId, String bagName, int price){
+    public BaggageEntity(Long bagId, String bagName, Double price){
         this.bagId = bagId;
         this.bagName = bagName;
         this.price = price;
@@ -40,11 +42,11 @@ public class BaggageEntity {
         bagName = bagName;
     }
 
-    public int getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
